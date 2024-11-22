@@ -178,9 +178,30 @@ simply copy paste the url http://XXX.X.X.X:XXXX/ is your internet browser
 
 ## Data and scripts of the paper
 
-### 1. Experience 1.
+### 1. Scripts Experience 1.
 
-#### a. Dataset manually labelised
+#### Dataset 1
 
 The informations relative to the datasets are stored in the folder ./data/dataset_EXP1.csv
 <img src="./images/screen_dataset_EXP1.png" alt="data EXP1" width="500"/>
+
+#### Computation of different sulcal depth for each subject of the dataset 1
+
+1. [Computation of SULC](#sulc)
+2. [Computation of dpf 0.03](#dpf003)
+3. [Computation of dpf-star](#dpfstar)
+
+<a name="sulc"/>
+
+##### Computation of SULC
+
+<a name="dpf003"/>
+
+##### Computation of the dpf 003
+
+<a name="dpfstar"/>
+
+##### Computation of dpfstar
+
+
+
