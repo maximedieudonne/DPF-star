@@ -176,16 +176,34 @@ simply copy paste the url http://XXX.X.X.X:XXXX/ is your internet browser
 
 <a name="scripts"/>
 
-## Data and scripts of the paper
+# Data and scripts of the paper
 
-### 1. Scripts Experience 1.
+1. [Dataset](#dataset1)
+2. [Computation of different sulcal depth](#depth)
+   1. [Computation of SULC](#sulc)
+   2. [Computation of dpf 0.03](#dpf003)
+   3. [Computation of dpf-star](#dpfstar)
+3. [Manual labelisation of the cortical structures](#manuallabel)
+   1. [Crest lines]
+   2. [fundi lines]
+   3. [direction lines]
+5. [Computation of quantitaiv metric for sulcal depth](#metrics)
+   1. [Computation of diff between fundi and crest](#difffundicrest)
+   2. [Computation of std crest](#stdcrest)
+   3. [Computation of angular deviation](#angular)
+       1. [computation of depth gradient]
+       2. [compuation of diffusion map]
+       3. [computation of gradient diffusion map]
 
-#### Dataset 1
+
+## 1. Scripts Experience 1.
+
+### Dataset 1
 
 The informations relative to the datasets are stored in the folder ./data/dataset_EXP1.csv
 <img src="./images/screen_dataset_EXP1.png" alt="data EXP1" width="500"/>
 
-#### Computation of different sulcal depth for each subject of the dataset 1
+### Computation of different sulcal depth for each subject of the dataset 1
 
 1. [Computation of SULC](#sulc)
 2. [Computation of dpf 0.03](#dpf003)
@@ -193,15 +211,26 @@ The informations relative to the datasets are stored in the folder ./data/datase
 
 <a name="sulc"/>
 
-##### Computation of SULC
+#### Computation of SULC
 
 <a name="dpf003"/>
 
-##### Computation of the dpf 003
+#### Computation of the dpf 003
 
 <a name="dpfstar"/>
 
-##### Computation of dpfstar
+#### Computation of dpfstar
 
+### Manual labelisation of the cortical structure on the dataset 1
+
+zenodo link
+
+### Compuation of metric
+
+1. [Computation of diff between fundi and crest](#difffundicrest)
+2. [Computation of std crest](#stdcrest)
+3. [Computation of angular deviation](#angular)
+
+#### 
 
 
