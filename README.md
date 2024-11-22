@@ -178,36 +178,35 @@ simply copy paste the url http://XXX.X.X.X:XXXX/ is your internet browser
 
 # Data and scripts of the paper
 
+## 1. Scripts Experience 1.
 1. [Dataset](#dataset1)
 2. [Computation of different sulcal depth](#depth)
    1. [Computation of SULC](#sulc)
    2. [Computation of dpf 0.03](#dpf003)
    3. [Computation of dpf-star](#dpfstar)
 3. [Manual labelisation of the cortical structures](#manuallabel)
-   1. [Crest lines]
-   2. [fundi lines]
-   3. [direction lines]
+   1. [Crest lines](#crest)
+   2. [fundi lines](#fundi)
+   3. [direction lines](#wall)
 5. [Computation of quantitaiv metric for sulcal depth](#metrics)
    1. [Computation of diff between fundi and crest](#difffundicrest)
    2. [Computation of std crest](#stdcrest)
    3. [Computation of angular deviation](#angular)
-       1. [computation of depth gradient]
-       2. [compuation of diffusion map]
-       3. [computation of gradient diffusion map]
+       1. [computation of depth gradient](#depthgradient)
+       2. [compuation of diffusion map](#diffusion)
+       3. [computation of gradient diffusion map](#gradientdiffusion)
 
 
-## 1. Scripts Experience 1.
+<a name="dataset1"/>
 
 ### Dataset 1
 
 The informations relative to the datasets are stored in the folder ./data/dataset_EXP1.csv
 <img src="./images/screen_dataset_EXP1.png" alt="data EXP1" width="500"/>
 
-### Computation of different sulcal depth for each subject of the dataset 1
+<a name="depth"/>
 
-1. [Computation of SULC](#sulc)
-2. [Computation of dpf 0.03](#dpf003)
-3. [Computation of dpf-star](#dpfstar)
+### Computation of different sulcal depth for each subject of the dataset 1
 
 <a name="sulc"/>
 
@@ -221,6 +220,38 @@ The informations relative to the datasets are stored in the folder ./data/datase
 
 #### Computation of dpfstar
 
+<a name="dataset1"/>
+
+### README Entry for DPF* Computation
+
+The `dpf*` (Depth Potential Function) was computed for the dataset **EXP1** using a Python script that leverages the `slam` package. This process calculates the depth potential function values across a range of alpha values, including the primary setting of `alpha = 0.03`. Below is a summary of the methodology:
+
+1. **Dataset and Input Data**:
+   - The dataset information was loaded from a CSV file (`dataset_EXP1.csv`) containing subject IDs, session IDs, and dataset identifiers.
+   - For each subject and session, the corresponding surface mesh file (`sub-<participant_id>_ses-<session_id>_hemi-L_space-T2w_wm.surf.gii`) and curvature files (`K1.gii` and `K2.gii`) were used as input. These files are stored in the `data_EXP1` directory.
+
+2. **Curvature Processing**:
+   - The principal curvatures \( K1 \) and \( K2 \) were averaged to compute the mean curvature:
+     \[
+     \text{Curvature} = 0.5 \times (K1 + K2)
+     \]
+
+3. **DPF* Computation**:
+   - The `depth.depth_potential_function` function from the `slam` package was used to compute the depth potential function (DPF) for each mesh. This function takes into account the curvature and a set of predefined alpha values:
+     \[
+     \text{Alphas: } [0, 0.0001, 0.0005, 0.001, 0.003, 0.005, 0.01, 0.03, 0.05, 0.5]
+     \]
+   - For consistency, the values were negated to obtain the `dpf*`:
+     \[
+     \text{DPF*} = -\text{DPF}
+     \]
+
+4. **Output**:
+   - The computed DPF* values were saved as `.gii` files for each subject and session in the directory `data_EXP1/result_EXP1/depth/<subject_session>/dpf/`.
+   - The alpha values used were saved as a CSV file (`alpha.csv`) in the same directory for reference.
+
+This automated computation pipeline ensures consistency and reproducibility across all subjects in the dataset, facilitating further analyses of sulcal depth using the DPF*. The script is structured for scalability, allowing for easy extension to additional datasets or parameter variations.
+
 ### Manual labelisation of the cortical structure on the dataset 1
 
 zenodo link
@@ -231,6 +262,6 @@ zenodo link
 2. [Computation of std crest](#stdcrest)
 3. [Computation of angular deviation](#angular)
 
-#### 
+
 
 
