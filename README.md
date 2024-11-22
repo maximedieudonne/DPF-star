@@ -181,9 +181,8 @@ simply copy paste the url http://XXX.X.X.X:XXXX/ is your internet browser
 ## 1. Scripts Experience 1.
 1. [Dataset](#dataset1)
 2. [Computation of different sulcal depth](#depth)
-   1. [Computation of SULC](#sulc)
-   2. [Computation of dpf 0.03](#dpf003)
-   3. [Computation of dpf-star](#dpfstar)
+   1. [SULC Computation for Dataset EXP1](#sulc)
+   2. [DPF 0.03 and DPF* Computation for Dataset EXP1](#dpf)
 3. [Manual labelisation of the cortical structures](#manuallabel)
    1. [Crest lines](#crest)
    2. [fundi lines](#fundi)
@@ -212,13 +211,9 @@ The informations relative to the datasets are stored in the folder ./data/datase
 
 #### Computation of SULC
 
-<a name="dpf003"/>
+<a name="dpf"/>
 
-#### Computation of the dpf 003
-
-<a name="dpfstar"/>
-
-#### DPF* Computation for Dataset EXP1
+#### DPF 0.03 and DPF* Computation for Dataset EXP1
 
 The `dpf*` (Depth Potential Function) was computed for the dataset **EXP1** using a Python script that leverages the `slam` package. This process calculates the depth potential function values across a range of alpha values, including the primary setting of `alpha = 0.03`. Below is a summary of the methodology:
 
@@ -238,7 +233,14 @@ The `dpf*` (Depth Potential Function) was computed for the dataset **EXP1** usin
      curv = 0.5 * (K1 + K2)
      ```
 
-3. **DPF* Computation**:
+3. **DPF and DPFstar Computation**:
+   - The `depth.depth_potential_function` function from the `slam` package is used to compute the depth potential function (DPF) for the surface mesh:
+   - \( \text{Alpha: } 0.03 \)
+   - The computed DPF values are negated to produce the `dpf*`:
+     ```python
+     dpf = depth.depth_potential_function(mesh, curv, [0.03])
+     dpf_star = -dpf[0]
+     ```
    - The `depth.depth_potential_function` function from the `slam` package was used to compute the depth potential function (DPF) for each mesh. This function takes into account:
      - The curvature,
      - A predefined set of alpha values:
@@ -250,7 +252,8 @@ The `dpf*` (Depth Potential Function) was computed for the dataset **EXP1** usin
      dpf = [-dp for dp in dpf_temp]
      ```
 
-4. **Output**:
+
+5. **Output**:
    - The computed DPF* values were saved as `.gii` files for each subject and session in the directory:
      ```
      data_EXP1/result_EXP1/depth/<subject_session>/dpf/
