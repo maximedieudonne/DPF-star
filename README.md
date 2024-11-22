@@ -218,39 +218,46 @@ The informations relative to the datasets are stored in the folder ./data/datase
 
 <a name="dpfstar"/>
 
-#### Computation of dpfstar
-
-<a name="dataset1"/>
-
-### README Entry for DPF* Computation
+#### DPF* Computation for Dataset EXP1
 
 The `dpf*` (Depth Potential Function) was computed for the dataset **EXP1** using a Python script that leverages the `slam` package. This process calculates the depth potential function values across a range of alpha values, including the primary setting of `alpha = 0.03`. Below is a summary of the methodology:
 
 1. **Dataset and Input Data**:
-   - The dataset information was loaded from a CSV file (`dataset_EXP1.csv`) containing subject IDs, session IDs, and dataset identifiers.
-   - For each subject and session, the corresponding surface mesh file (`sub-<participant_id>_ses-<session_id>_hemi-L_space-T2w_wm.surf.gii`) and curvature files (`K1.gii` and `K2.gii`) were used as input. These files are stored in the `data_EXP1` directory.
+   - The dataset information was loaded from a CSV file (`dataset_EXP1.csv`) containing:
+     - `participant_id` (subject ID),
+     - `session_id` (session ID),
+     - `dataset` (dataset identifier).
+   - For each subject and session, the following input files were used:
+     - Surface mesh: `sub-<participant_id>_ses-<session_id>_hemi-L_space-T2w_wm.surf.gii`
+     - Curvature files: `K1.gii` and `K2.gii`
+   - All input files are stored in the `data_EXP1` directory.
 
 2. **Curvature Processing**:
    - The principal curvatures \( K1 \) and \( K2 \) were averaged to compute the mean curvature:
-     \[
-     \text{Curvature} = 0.5 \times (K1 + K2)
-     \]
+     ```python
+     curv = 0.5 * (K1 + K2)
+     ```
 
 3. **DPF* Computation**:
-   - The `depth.depth_potential_function` function from the `slam` package was used to compute the depth potential function (DPF) for each mesh. This function takes into account the curvature and a set of predefined alpha values:
-     \[
-     \text{Alphas: } [0, 0.0001, 0.0005, 0.001, 0.003, 0.005, 0.01, 0.03, 0.05, 0.5]
-     \]
+   - The `depth.depth_potential_function` function from the `slam` package was used to compute the depth potential function (DPF) for each mesh. This function takes into account:
+     - The curvature,
+     - A predefined set of alpha values:
+       ```python
+       alphas = [0, 0.0001, 0.0005, 0.001, 0.003, 0.005, 0.01, 0.03, 0.05, 0.5]
+       ```
    - For consistency, the values were negated to obtain the `dpf*`:
-     \[
-     \text{DPF*} = -\text{DPF}
-     \]
+     ```python
+     dpf = [-dp for dp in dpf_temp]
+     ```
 
 4. **Output**:
-   - The computed DPF* values were saved as `.gii` files for each subject and session in the directory `data_EXP1/result_EXP1/depth/<subject_session>/dpf/`.
-   - The alpha values used were saved as a CSV file (`alpha.csv`) in the same directory for reference.
+   - The computed DPF* values were saved as `.gii` files for each subject and session in the directory:
+     ```
+     data_EXP1/result_EXP1/depth/<subject_session>/dpf/
+     ```
+   - The alpha values used for computation were saved as a CSV file (`alpha.csv`) in the same directory.
 
-This automated computation pipeline ensures consistency and reproducibility across all subjects in the dataset, facilitating further analyses of sulcal depth using the DPF*. The script is structured for scalability, allowing for easy extension to additional datasets or parameter variations.
+
 
 ### Manual labelisation of the cortical structure on the dataset 1
 
