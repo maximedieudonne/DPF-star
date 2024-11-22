@@ -211,28 +211,26 @@ The informations relative to the datasets are stored in the folder ./data/datase
 
 #### Computation of SULC
 
-# Mesh Processing and Sulcal Depth Analysis
-
-This project provides a pipeline for processing and analyzing brain surface meshes and computing sulcal depth. The workflow consists of three main steps: mesh conversion, sulcal depth computation, and data post-processing.
+It provides a pipeline for processing and analyzing brain surface meshes and computing sulcal depth. The workflow consists of three main steps: mesh conversion, sulcal depth computation, and data post-processing.
 Requirement : 
 - **FreeSurfer**: For mesh conversion.
 - **MIRTK**: For sulcal depth computation on scaled meshes.
 
-1. Mesh Conversion
+1. **Mesh Conversion**
 Purpose: Convert white matter surface meshes into a format compatible with FreeSurfer tools.
 - Input files: `.surf.gii` meshes located in the `meshes/` directory.
 - Tool used: `mris_convert` from FreeSurfer.
 - Output files: Converted meshes saved in the `mris_meshes/` directory.
 - Batch processing is supported for multiple subjects.
 
-2. Sulcal Depth Computation on Scaled Meshes
+2. **Sulcal Depth Computation**
 Purpose: Compute sulcal depth across multiple scales using `mirtk` deformation tools.
 - Input files: Preprocessed scaled meshes for each subject.
 - Tool used: `mirtk deform-mesh` with the `-track SulcalDepth` option.
 - Output files: Sulcal depth `.gii` files saved in scale-specific subdirectories.
 - Scales include predefined resolutions, enabling multi-scale analysis.
 
-3. Sulcal Depth Post-Processing
+3. **Sulcal Depth Extraction**
 Purpose : Prepare sulcal depth data for analysis by normalizing and saving processed values.
 - Input files: Sulcal depth `.gii` files generated in the previous step.
 - Operations performed:
@@ -240,9 +238,6 @@ Purpose : Prepare sulcal depth data for analysis by normalizing and saving proce
   - Inverse the sign of the values to ensure positivity.
 - Output files: Processed `.gii` files saved in the `sulc/` subdirectory for each subject.
 
-
-
-### Software:
 
 <a name="dpf"/>
 
