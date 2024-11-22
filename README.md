@@ -19,21 +19,19 @@ The code here provides tools to compute curvature and a novel DPF-STAR depth mea
 <a name="installation"/>
 
 ## Installation
-
-Follow these steps to set up and run this project on your machine.
-
-### Prerequisites
-
-- Make sure **Conda** is installed on your machine. You can download Miniconda or Anaconda here: [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/products/distribution)  
-- Ensure that `bash` is available (commonly pre-installed on Linux and macOS, or via Git Bash on Windows).
+First, fork and Clone this repository:
+```bash
+git clone https://github.com/your-username/DPF-star
+cd DPF-star
+```
+Then, follow the installation steps to set up and run this project on your machine.
 
 ### Installation Steps
 
 #### Option 1 : automatic installation of the conda env (recommended)
-1. Fork and Clone this repository:
-```bash
-git clone https://github.com/your-username/DPF-star .git
-cd DPF-star
+
+1. Make sure **Conda** is installed on your machine. You can download Miniconda or Anaconda here: [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/products/distribution)  
+
 ```
 2. Run the installation script:
 ```bash
