@@ -290,16 +290,5 @@ The `dpf*` (Depth Potential Function) was computed for the dataset **EXP1** usin
 
 
 
-### Manual labelisation of the cortical structure on the dataset 1
-
-zenodo link
-
-### Compuation of metric
-
-1. [Computation of diff between fundi and crest](#difffundicrest)
-2. [Computation of std crest](#stdcrest)
-3. [Computation of angular deviation](#angular)
-
-
 
 
