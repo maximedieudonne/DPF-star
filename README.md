@@ -79,32 +79,30 @@ You can run pip install -e . after creating either a Python virtual environment 
 <a name="organization"/>
 
 ## Repository Organization
-There are 3 main files in this repo : 
+There are 2 main files in this repo : 
 (1) app : functions you can run on command line and allow you to use the dpf-star method for your own studies.
-(2) scripts : the scripts used for the different experience introduced in the article.
-(3) functions : functions useful both for the app and the scripts.
+(2) research : the scripts used for the different experience introduced in the article.
 The repository is organized as follows:
 
 ```plaintext
 DPF-STAR/
+│ 
 ├── app/                       # Application for using the DPF-STAR method on custom data
-│   ├── compute_curvature.py   # Script for computing mesh curvature
-│   ├── compute_dpfstar.py     # Script for computing the DPF-STAR depth
-│   └── visualiser.py          # Script for visualizing textures on meshes
-├── fonctions/                 # Utility functions used by the app
-│   ├── curvature.py
-│   ├── dpf.py
-│   ├── dpfstar.py
-│   ├── laplacian.py
-│   ├── rw.py
-│   ├── topology.py
-│   └── texture.py
-├── scripts/                   # Scripts used in experiments for the paper
-│   ├── scripts_EXP1.py
-│   ├── scripts_EXP2.py
-│   ├── scripts_EXP3.py
-│   └── scripts_EXP4.py
-└── setup.py                   # Setup file for installing the package
+│   ├── fonctions/             # fonctions used by the app commands
+│   ├── compute_curvature.py   # command for computing mesh curvature
+│   ├── compute_dpfstar.py     # command for computing the DPF-STAR depth
+│   └── visualiser.py          # command for visualizing textures on meshes
+│ 
+├── research/                  # Scripts and used in experiments for the paper
+│   ├── scripts/
+│   │    ├── scripts_EXP1.py
+│   │    ├── scripts_EXP2.py
+│   │    ├── scripts_EXP3.py
+│   │    └── scripts_EXP4.py
+│   ├── data/
+│   └── toolrs/
+│ 
+└── config.py                   # file for config local path
 ```
 
 <a name="configuration"/>
